@@ -7,7 +7,7 @@ data:
     #!/bin/sh
     import_kibana_dashboard () {
             echo "Importing dashboard..."
-            until curl -v -s --connect-timeout 60 --max-time 60 -X POST http://localhost:5601/api/saved_objects/_import?overwrite=true -H "kbn-xsrf: true" --form file=@files/kibana-dashboard.ndjson -H 'kbn-xsrf: true'; do sleep 5; done
+            until curl -v -s --connect-timeout 60 --max-time 60 -X POST http://localhost:5601/api/saved_objects/_import?overwrite=true -H "kbn-xsrf: true" --form file=kibana-dashboard.ndjson -H 'kbn-xsrf: true'; do sleep 5; done
             if [ $(echo "$?") = "0" ]; then
               printf "\n########## Imported dashboard successfully! #############################\n"
             else
